@@ -5,7 +5,6 @@ public class Curso extends Conteudo {
 	private int cargaHoraria;
 	
 	public Curso() {
-		
 	}
 
 	public int getCargaHoraria() {
@@ -21,12 +20,9 @@ public class Curso extends Conteudo {
 		return XP_PADRAO * cargaHoraria;
 	}
 	
-	 @Override
-	    public String toString() {
-	    	return "\nMentoria: {" + 
-	    			"titulo: " + getTitulo() + "}\"" +
-	    			" \ndescricao: {" + getDescricao() + "}\"" +
-	    			" \ndata: {" + cargaHoraria +" horas}";
-	    }
+	@Override
+	public String toString() {
+		return String.format("Curso]\nTitulo: {%s}\nDescricao: {%s}\nCarga Horaria: {%sh}", getTitulo(), getDescricao(), getCargaHoraria());
+	}
 
 }

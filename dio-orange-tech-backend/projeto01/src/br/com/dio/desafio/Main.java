@@ -1,5 +1,7 @@
 package br.com.dio.desafio;
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.List;
 
 import br.com.dio.desafio.dominio.Bootcamp;
 import br.com.dio.desafio.dominio.Curso;
@@ -9,53 +11,56 @@ import br.com.dio.desafio.dominio.Mentoria;
 public class Main {
 	public static void main(String[] args) {
 		
-		Curso curso1 = new Curso();
-		curso1.setTitulo("curso de Java");
-		curso1.setDescricao("neste curso de Java você aprendera POO");
-		curso1.setCargaHoraria(8);
+		Curso cursoJava = new Curso();
+		cursoJava.setTitulo("Curso de Java");
+		cursoJava.setDescricao("neste curso de Java voce aprendera POO");
+		cursoJava.setCargaHoraria(8);
 		
-		Curso curso2= new Curso();
-		curso2.setTitulo("curso de Js");
-		curso2.setDescricao("neste curso de Js você aprendera Js para Front-End");
-		curso2.setCargaHoraria(4);
+		Curso cursoJs = new Curso();
+		cursoJs.setTitulo("curso de Javascript");
+		cursoJs.setDescricao("neste curso de Js voce aprendera Js para Front-End");
+		cursoJs.setCargaHoraria(12);
 		
+		Mentoria mentoriaSpring = new Mentoria("Falvojr");
+		mentoriaSpring.setTitulo("mentoria de Spring");
+		mentoriaSpring.setDescricao("nesta mentoria de Java será visto boas práticas de código");
+		mentoriaSpring.setData(LocalDate.now());
 		
-		Mentoria mentoria = new Mentoria();
-		mentoria.setTitulo("mentoria de Java");
-		mentoria.setDescricao("nesta mentoria de Java será visto boas práticas de código");
-		mentoria.setData(LocalDate.now());
+		Mentoria mentoriaJs= new Mentoria("Camila");
+		mentoriaJs.setTitulo("mentoria de Javascript");
+		mentoriaJs.setDescricao("nesta mentoria será visto frameworks Js");
+		mentoriaJs.setData(LocalDate.of(2023, 02, 06));
 		
-		Bootcamp bootcamp = new Bootcamp();
-		bootcamp.setNome("Bootcamp Java Developer");
-		bootcamp.setDescricao("Bootcamp Java Developer, do básico ao avançado");
-		bootcamp.getConteudos().add(curso1);
-		bootcamp.getConteudos().add(curso2);
-		bootcamp.getConteudos().add(mentoria);
+		Bootcamp bootcampJava = new Bootcamp("Java");
+		bootcampJava.setNome("Java e orientacao a objeto");
+		bootcampJava.setDescricao("Nesse bootcamp sera visto boas praticas de Java e orientacao a objeto");
+		bootcampJava.getConteudos().add(cursoJava);
+		bootcampJava.getConteudos().add(mentoriaSpring);
 		
-		Dev luiz = new Dev();
-		luiz.setNome("Luiz");
-		luiz.inscreverBootcamp(bootcamp);
-		System.out.println("Conteudos inscritos do Luiz: " + luiz.getConteudosInscritos());
+		Bootcamp bootcampJs = new Bootcamp("Javascript");
+		bootcampJs.setNome("Javascript para paginas web");
+		bootcampJs.setDescricao("Nesse bootcamp voce aprendera a fazer paginas dinamicas");
+		bootcampJs.getConteudos().add(cursoJs);
+		bootcampJs.getConteudos().add(mentoriaJs);
 		
-		System.out.println("\nSeu XP atual: " + luiz.calculaTotalXP() + "XP");
-		luiz.progredir();
-		luiz.progredir();
-		System.out.println("________________________________________________________________________");
-		System.out.println("Conteudos concluidos do Luiz: " + luiz.getConteudosConcluidos());
-		System.out.println("\nSeu XP atual: " + luiz.calculaTotalXP() + "XP");
+		List<Dev> devsJava = Arrays.asList(
+				new Dev("Ednaldo"));
 		
-		System.out.println("\n#######################################################################\n");
+		List<Dev> devsJs = Arrays.asList(
+				new Dev("Luiz"));
 		
-		Dev ednaldo = new Dev();
-		ednaldo.setNome("Ednaldo");
-		ednaldo.inscreverBootcamp(bootcamp);
-		System.out.println("Conteudos inscritos do Ednaldo: " + ednaldo.getConteudosInscritos());
+		devsJava.forEach(dev -> dev.inscreverBootcamp(bootcampJava));
 		
-		System.out.println("\nSeu XP atual: " + ednaldo.calculaTotalXP() + "XP");
-		ednaldo.progredir();
-		System.out.println("________________________________________________________________________");
-		System.out.println("Conteudos concluidos do Ednaldo: " + ednaldo.getConteudosConcluidos());
-		System.out.println("\nSeu XP atual: " + ednaldo.calculaTotalXP() + "XP");
+		devsJs.forEach(dev -> dev.inscreverBootcamp(bootcampJs));
 		
+		devsJava.forEach(dev -> dev.progredir());
+		devsJava.forEach(dev -> dev.progredir());
+		devsJava.forEach(dev -> dev.progredir());
+		
+		System.out.println(bootcampJava);
+		
+		System.out.println(bootcampJs);
+		
+		devsJs.forEach(dev -> dev.calculaTotalXP());
 	}
 }

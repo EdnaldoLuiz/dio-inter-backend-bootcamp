@@ -8,12 +8,17 @@ import java.util.Set;
 
 public class Bootcamp {
 	
+	public String tema;
 	private String nome;
 	private String descricao;
 	private final LocalDate dataInicial = LocalDate.now();
 	private final LocalDate dataFinal = dataInicial.plusDays(45);
 	private Set<Dev> devInscritos = new HashSet<>();
 	private Set<Conteudo> conteudos = new LinkedHashSet<>();
+	
+	public Bootcamp(String tema) {
+		this.tema = tema;
+	}
 	
 	@Override
 	public int hashCode() {
@@ -34,18 +39,32 @@ public class Bootcamp {
 				&& Objects.equals(devInscritos, other.devInscritos) && Objects.equals(nome, other.nome);
 	}
 	
+	@Override
+	public String toString() {
+		return "_________________________________________________________________________\n" + 
+				"Nome do Bootcamp: " + nome + 
+				"\nDescricao: " + descricao + 
+				"\nDevs inscritos no Bootcamp de " + tema + 
+				":\n__________________________"
+				+ "____________________________________\n\n"  + devInscritos;
+	}
+	
 	public String getNome() {
 		return nome;
 	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
 	public String getDescricao() {
 		return descricao;
 	}
+
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+
 	public Set<Dev> getDevInscritos() {
 		return devInscritos;
 	}

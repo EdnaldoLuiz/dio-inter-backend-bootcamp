@@ -11,6 +11,10 @@ public class Dev {
 	private Set<Conteudo> conteudosInscritos = new LinkedHashSet<>();
 	private Set<Conteudo> conteudosConcluidos = new LinkedHashSet<>();
 	
+	public Dev(String nome) {
+		this.nome = nome;
+	}
+	
 	public void inscreverBootcamp(Bootcamp bootcamp) {
 		this.conteudosInscritos.addAll(bootcamp.getConteudos());
 		bootcamp.getDevInscritos().add(this);
@@ -22,7 +26,7 @@ public class Dev {
 			this.conteudosConcluidos.add(conteudo.get());
 			this.conteudosInscritos.remove(conteudo.get());
 		} else {
-			System.err.println("Você não esta matriculado em nenhum conteúdo");
+			System.err.println(this.nome + " nao esta matriculado em nenhum conteudo!!");
 		}
 	}
     
@@ -46,6 +50,14 @@ public class Dev {
 		Dev other = (Dev) obj;
 		return Objects.equals(conteudosConcluidos, other.conteudosConcluidos)
 				&& Objects.equals(conteudosInscritos, other.conteudosInscritos) && Objects.equals(nome, other.nome);
+	}
+	
+	@Override
+	public String toString() {
+		return "Nome: " + nome + "]"
+				+"\n-> Conteudos inscritos: \n" + conteudosInscritos
+				+ "Seu XP Total: " + calculaTotalXP() + " XP";
+		
 	}
 
 	public String getNome() {
@@ -71,4 +83,5 @@ public class Dev {
 	public void setConteudosConcluidos(Set<Conteudo> conteudosConcluidos) {
 		this.conteudosConcluidos = conteudosConcluidos;
 	}
+
 }
