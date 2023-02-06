@@ -1,7 +1,7 @@
 # <h1 align="center">dio-bootcamp-inter</h1>
 
 <p align="center">
-     <img alt="hertzbeat" src="https://user-images.githubusercontent.com/112354693/213033967-cb66274c-62de-48cb-8675-458a9a155c86.jpg" width="500">
+     <img alt="imagem ilustrativa sobre a orange tech" src="https://user-images.githubusercontent.com/112354693/213033967-cb66274c-62de-48cb-8675-458a9a155c86.jpg" width="500">
 </p>
 
 
